@@ -1,0 +1,44 @@
+.loginContainer{
+    margin-top: 10rem;
+}
+.loginContainer > div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.tab{
+    width:50%;
+    background-color: beige;
+    text-align: center;
+    border-radius: .7rem .7rem 0rem 0rem;
+    cursor: pointer;
+    padding: .5rem;
+    opacity: .5;
+}
+.active{
+    border-left: 3px solid blue;
+    opacity: 1;
+}
+.form{
+    width:fit-content;
+    padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: beige;
+    border-radius: 0rem 0rem .7rem .7rem;
+}
+.form input, button {
+    margin: 1rem;
+    border-radius: .3rem;
+    height: 1.8rem;
+    min-width: 4rem;
+    padding: 0rem .2rem;
+}
+.form > label {
+    margin: 0rem;
+}
+.form button{
+    cursor: pointer;
+}

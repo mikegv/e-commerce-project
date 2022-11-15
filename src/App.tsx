@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom'
-import Login from './components/Login';
+import Login from './components/Login/Login';
+import Dashboard from './components/Dashboard';
 import { useSelector } from 'react-redux';
 import { RootState } from './redux/store'
 
@@ -9,9 +10,17 @@ function App() {
   const loggedIn = useSelector((state: RootState) => state.loggedIn)
   return (
     <div className="App">
-      {loggedIn && <p>Hi</p>}
       <Routes>
-        <Route path='/' element={<Login />} />
+        {
+          !loggedIn &&
+          <Route path='/' element={<Login />} />
+        }
+        {
+          loggedIn &&
+          <>
+            <Route path='/' element={<Dashboard />} />
+          </>
+        }
       </Routes>
     </div>
   );
