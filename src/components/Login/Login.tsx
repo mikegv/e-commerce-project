@@ -1,24 +1,53 @@
 import { useState } from "react";
 import classes from "./login.module.css";
+import useLogin from "./useLogin";
 
 const Login = () => {
-    const [login, setLogin] = useState(false)
+
+  let {
+    email,
+    password,
+    emailChangeHandler,
+    passwordChangeHandler,
+    submitHandler,
+  } = useLogin();
+
+  const [login, setLogin] = useState(true);
+
   return (
     <div className={classes.loginContainer}>
       <div>
-        <div onClick={()=>setLogin(!login)} className={login ? `${classes.tab} ${classes.active}` : classes.tab }>login</div>
-        <div onClick={()=>setLogin(!login)} className={!login ? `${classes.tab} ${classes.active}` : classes.tab}>register</div>
+        <div
+          onClick={() => setLogin(!login)}
+          className={login ? `${classes.tab} ${classes.active}` : classes.tab}
+        >
+          login
+        </div>
+        <div
+          onClick={() => setLogin(!login)}
+          className={!login ? `${classes.tab} ${classes.active}` : classes.tab}
+        >
+          register
+        </div>
       </div>
-      <form className={classes.form}>
+      <form className={classes.form} onSubmit={(e) => submitHandler(e, login)}>
         <label>
-          Username:
-          <input type="text" />
+          Email:
+          <input
+            type="text"
+            value={email}
+            onChange={(e) => emailChangeHandler(e)}
+          />
         </label>
         <label>
           Password:
-          <input type="password" />
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => passwordChangeHandler(e)}
+          />
         </label>
-        <button>{login? 'Login' : 'Register'}</button>
+        <button type="submit">{login ? "Login" : "Register"}</button>
       </form>
     </div>
   );
