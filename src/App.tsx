@@ -19,6 +19,7 @@ function App() {
           loggedIn &&
           <>
             <Route path='/' element={<Dashboard />} />
+            <Route path='/profile' element={<Dashboard />} />
           </>
         }
       </Routes>

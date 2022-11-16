@@ -1,10 +1,16 @@
 import React, { FormEvent, useState } from "react";
 import axios from "axios";
 import { firebaseConfig } from "../../firebase-config"; //contains api key for firebase endpoints
+import { authActions } from "../../redux/store";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const useLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   function emailChangeHandler(e: React.ChangeEvent<HTMLInputElement>) {
     setEmail(e.target.value);
   }
@@ -29,9 +35,11 @@ const useLogin = () => {
         returnSecureToken: true,
       })
       .then((res) => {
-        console.log(res.data.idToken);
+        localStorage.setItem('token', res.data.idToken);
+        dispatch(authActions.login());
         setEmail('')
         setPassword('')
+        navigate('/profile');
       });
   }
 
