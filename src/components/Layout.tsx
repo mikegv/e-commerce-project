@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom";
 const Layout: React.FC = () => {
 
     return (
-        <div style={{width: '100%',height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+        <div style={{width: '100%',minHeight: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
             <Navbar />
             <Outlet />
         </div>
