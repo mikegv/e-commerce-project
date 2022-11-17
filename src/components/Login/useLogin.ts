@@ -1,6 +1,6 @@
 import React, { FormEvent, useState } from "react";
 import axios from "axios";
-import { firebaseConfig } from "../../firebase-config"; //contains api key for firebase endpoints
+// import { firebaseConfig } from "../../firebase-config"; //contains api key for firebase endpoints
 import { authActions } from "../../redux/store";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -29,7 +29,7 @@ const useLogin = () => {
       url = "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=";
     }
     axios
-      .post(`${url}${firebaseConfig.apiKey}`, {
+      .post(`${url}${process.env.REACT_APP_API_KEY}`, {
         email,
         password,
         returnSecureToken: true,
