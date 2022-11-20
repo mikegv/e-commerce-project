@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 const useLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -40,7 +41,13 @@ const useLogin = () => {
         setEmail('')
         setPassword('')
         navigate('/profile');
-      });
+      })
+      .catch(err => {
+        setError(err.response.data.error.message)
+        setEmail('')
+        setPassword('')
+      }
+      );
   }
 
   return {
@@ -48,6 +55,7 @@ const useLogin = () => {
     password,
     emailChangeHandler,
     passwordChangeHandler,
+    error,
     submitHandler
   };
 };

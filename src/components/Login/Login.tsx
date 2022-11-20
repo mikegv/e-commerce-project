@@ -9,6 +9,7 @@ const Login = () => {
     password,
     emailChangeHandler,
     passwordChangeHandler,
+    error,
     submitHandler,
   } = useLogin();
 
@@ -47,6 +48,9 @@ const Login = () => {
             onChange={(e) => passwordChangeHandler(e)}
           />
         </label>
+        <span className={classes.error}>
+          {error}
+        </span>
         <button type="submit">{login ? "Login" : "Register"}</button>
       </form>
     </div>

@@ -8,7 +8,10 @@ import "./navbar.module.css";
 const Navbar = () => {
   const dispatch = useDispatch();
   const loggedIn = useSelector((state: RootState) => state.loggedIn);
-  
+  function logout(){
+    dispatch(authActions.logout());
+    localStorage.removeItem('token');
+  }
   return (
     <nav>
       <ul>
@@ -16,16 +19,18 @@ const Navbar = () => {
           <Link to="/store">Store</Link>
         </li>
 
-        {loggedIn && (
+        {
+        loggedIn && (
           <>
             <li>
               <Link to="/profile">Your Profile</Link>
             </li>
             <li>
-              <span onClick={() => dispatch(authActions.logout())}>Logout</span>
+              <span onClick={logout}>Logout</span>
             </li>
           </>
-        )}
+        )
+        }
         {
           !loggedIn &&
           <li>
