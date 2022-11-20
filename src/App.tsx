@@ -3,12 +3,26 @@ import Login from "./components/Login/Login";
 import Dashboard from "./components/Dashboard/Dashboard";
 import Layout from "./components/Layout";
 import Store from "./components/Shop";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "./redux/store";
+import { useEffect, useState } from "react";
+import { authActions } from "./redux/store";
 import "./App.css";
 
 function App() {
+  const [firstLoad, setFirstLoad] = useState(true)
+  const dispatch = useDispatch();
   const loggedIn = useSelector((state: RootState) => state.loggedIn);
+  useEffect(()=>{
+    //check for token from browser on first load of page
+    if(firstLoad){
+      let token = localStorage.getItem('token');
+      if(token){
+        dispatch(authActions.login());
+        setFirstLoad(false);
+      }
+    }
+  },[])
   return (
     <div className="App">
       <Routes>
