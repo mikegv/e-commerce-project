@@ -19,4 +19,19 @@ export const StyledCard = styled.div`
     p{
         margin-top: .5rem;
     }
+    div{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    span{
+        cursor: pointer;
+    }
+    .cart{
+        color: gray;
+    }
+    .heart{
+        color: red;
+    }
 `
