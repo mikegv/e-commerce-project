@@ -48,3 +48,16 @@ export const StyledCard = styled.div`
         color: red;
     }
 `
+
+export const StyledListCard = styled(StyledCard)`
+margin-bottom: 0px;
+`
+
+export const StyledItemButton = styled.button`
+    margin-top: .6rem;
+    cursor: pointer;
+    
+    :active{
+        background-color: darkgray;
+    }
+`
