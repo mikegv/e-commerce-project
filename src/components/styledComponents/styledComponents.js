@@ -6,6 +6,19 @@ export const StyledShopLayout = styled.div`
     flex-wrap: wrap;
     margin: 2rem;
 `
+export const StyledDashboard = styled.div`
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    a{
+        margin-top: 2rem;
+        text-decoration: none;
+        color: black;
+    }
+`
 
 export const StyledCard = styled.div`
     box-shadow: 4px 5px 11px rgb(200,200,200);

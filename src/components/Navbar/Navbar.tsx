@@ -7,7 +7,7 @@ import "./navbar.module.css";
 
 const Navbar = () => {
   const dispatch = useDispatch();
-  const loggedIn = useSelector((state: RootState) => state.loggedIn);
+  const loggedIn = useSelector((state: RootState) => state.auth.loggedIn);
   function logout(){
     dispatch(authActions.logout());
     localStorage.removeItem('token');
