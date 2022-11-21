@@ -1,9 +1,11 @@
 import React from "react";
 import { StyledCard } from "../styledComponents/styledComponents";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart, faCartShopping } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart, faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch } from "react-redux";
 import { cartActions } from "../../redux/store";
+import { useAppSelector } from "../../hooks/hooks";
+import { Link } from "react-router-dom";
 
 interface Product {
   id: number;
@@ -12,19 +14,40 @@ interface Product {
   price: number;
 }
 const ItemCard: React.FC<{
-  product: Product
-}> = ({ product: {id, name, desc, price} }) => {
-
+  product: Product;
+}> = ({ product: { id, name, desc, price } }) => {
+  const loggedIn = useAppSelector((state) => state.auth.loggedIn);
   const dispatch = useDispatch();
   return (
     <StyledCard>
       <h4>{name}</h4>
       <p>{desc}</p>
+      <p>${price}</p>
       <div>
-        <span><FontAwesomeIcon icon={faHeart} className='heart' />
-</span>
-        <p>${price}</p>
-        <span onClick={()=>dispatch(cartActions.addItem({id, name, price }))}><FontAwesomeIcon icon={faCartShopping} className='cart' /></span>
+        {loggedIn && (
+          <>
+            <span>
+              <FontAwesomeIcon icon={faHeart} className="heart" />
+            </span>
+            <span
+              onClick={() => dispatch(cartActions.addItem({ id, name, price }))}
+            >
+              <FontAwesomeIcon icon={faCartShopping} className="cart" />
+            </span>
+          </>
+        )}
+
+        {!loggedIn && (
+          <>
+            <Link to="/">
+              <FontAwesomeIcon icon={faHeart} className="heart" />
+            </Link>
+            <Link to="/
+            ">
+              <FontAwesomeIcon icon={faCartShopping} className="cart" />
+            </Link>
+          </>
+        )}
       </div>
     </StyledCard>
   );

@@ -2,7 +2,7 @@ import { products } from "../products";
 import ItemCard from "./itemCard/ItemCard";
 import { StyledShopLayout } from "./styledComponents/styledComponents";
 
-const Shop = () => {
+const Shop = () => {  
   return (
     <StyledShopLayout>
       {products.map((item) => (

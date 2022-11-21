@@ -31,6 +31,7 @@ function App() {
             <>
               <Route path="/" element={<Login />} />
               <Route path="/profile" element={<Navigate to="/" />} />
+              <Route path="/cart" element={<Navigate to="/" />} />
             </>
           )}
           {loggedIn && (
