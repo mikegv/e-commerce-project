@@ -6,6 +6,7 @@ const Dashboard = () => {
         <StyledDashboard>
             <h2>Dashboard</h2>
             <Link to='/cart'>View Cart</Link>
+            <Link to='/orders'>Orders</Link>
         </StyledDashboard>
     );
 };

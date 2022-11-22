@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { authActions } from "./redux/store";
 import "./App.css";
 import { useAppDispatch, useAppSelector } from "./hooks/hooks";
+import Orders from "./components/orders/Orders";
 
 function App() {
   const [firstLoad, setFirstLoad] = useState(true)
@@ -39,6 +40,7 @@ function App() {
               <Route path="/" element={<Dashboard />} />
               <Route path="/profile" element={<Dashboard />} />
               <Route path="/cart" element={<Cart />} />
+              <Route path="/orders" element={<Orders />} />
             </>
           )}
           <Route path="/store" element={<Store />} />

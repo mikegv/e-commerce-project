@@ -1,6 +1,31 @@
 import { configureStore, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface CartItem {
+interface Order{
+    id: number,
+    items: CartItem[]
+}
+interface OrderState{
+    orders: Order[]  //I think this is right 
+}
+const ordersInitialState: OrderState = {
+    orders: []
+}
+const orderSlice = createSlice({
+    name: 'orders',
+    initialState: ordersInitialState,
+    reducers: {
+        addOrder(state, action: PayloadAction<CartItem[]>){
+            let id = Math.floor(Math.random() * 5000);
+            state.orders.push({id, items: action.payload});
+        },
+        returnItem(state, action){
+            //find the single item to return and get a refund for that?
+        }
+    }
+})
+
+
+export interface CartItem {
     id: number,
     name: string,
     price: number,
@@ -42,6 +67,9 @@ const cartSlice = createSlice({
             }else{
                 item!.quantity -= 1;
             }
+        },
+        clearCart(state){
+            state.items = [];
         }
     }
 })
@@ -65,11 +93,13 @@ const authSlice = createSlice({
 
 const store = configureStore({reducer: {
     cart: cartSlice.reducer, 
-    auth: authSlice.reducer
+    auth: authSlice.reducer,
+    orders: orderSlice.reducer
 }})
 
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch;
 export const authActions = authSlice.actions;
 export const cartActions = cartSlice.actions;
+export const orderActions = orderSlice.actions;
 export default store;
