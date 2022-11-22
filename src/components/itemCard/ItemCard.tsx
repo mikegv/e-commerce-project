@@ -3,7 +3,7 @@ import { StyledCard } from "../styledComponents/styledComponents";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch } from "react-redux";
-import { cartActions } from "../../redux/store";
+import { cartActions } from "../../redux/cart";
 import { useAppSelector } from "../../hooks/hooks";
 import { Link } from "react-router-dom";
 

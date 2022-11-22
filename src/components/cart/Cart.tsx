@@ -1,5 +1,6 @@
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
-import { CartItem ,cartActions, orderActions } from "../../redux/store";
+import { CartItem ,cartActions } from "../../redux/cart";
+import { orderActions } from "../../redux/orders";
 import { StyledListCard, StyledItemButton, StyledCartPage } from "../styledComponents/styledComponents";
 
 const Cart = () => {
