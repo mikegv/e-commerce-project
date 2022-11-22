@@ -1,19 +1,19 @@
-import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
-import { CartItem ,cartActions, orderActions } from "../../redux/store";
-import { StyledListCard } from "../styledComponents/styledComponents";
+import { useAppSelector } from "../../hooks/hooks";
+import { StyledListCard, StyledOrderPage } from "../styledComponents/styledComponents";
 
 const Orders = () => {
     const prevOrders = useAppSelector(state => state.orders.orders);
 
     return (
-        <div>
+        <StyledOrderPage>
             <h2>Order History</h2>
             {
                 prevOrders.length < 1 ? 
                 <p>You have made no orders yet.</p> :
                 prevOrders.map(order => {
                     return <StyledListCard>
-                        <p>{order.id}</p>
+                        <p>Order #{order.id}</p>
+                        <p>Total: ${order.total}</p>
                         {order.items.map(item => {
                             return <StyledListCard>
                                 <p>{item.name}</p>
@@ -24,7 +24,7 @@ const Orders = () => {
                 })
                 
             }
-        </div>
+        </StyledOrderPage>
     );
 };
 

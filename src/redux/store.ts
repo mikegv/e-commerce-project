@@ -2,6 +2,7 @@ import { configureStore, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface Order{
     id: number,
+    total: number,
     items: CartItem[]
 }
 interface OrderState{
@@ -14,12 +15,12 @@ const orderSlice = createSlice({
     name: 'orders',
     initialState: ordersInitialState,
     reducers: {
-        addOrder(state, action: PayloadAction<CartItem[]>){
+        addOrder(state, action: PayloadAction<{total: number, order: CartItem[]}>){
             let id = Math.floor(Math.random() * 5000);
-            state.orders.push({id, items: action.payload});
+            state.orders.push({id, total: action.payload.total, items: action.payload.order});
         },
         returnItem(state, action){
-            //find the single item to return and get a refund for that?
+
         }
     }
 })

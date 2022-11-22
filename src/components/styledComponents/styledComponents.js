@@ -6,6 +6,17 @@ export const StyledShopLayout = styled.div`
     flex-wrap: wrap;
     margin: 2rem;
 `
+
+export const StyledCartPage = styled.div`
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+`
+export const StyledOrderPage = styled(StyledCartPage)`
+
+`
+
 export const StyledDashboard = styled.div`
     height: 100%;
     width: 100%;
