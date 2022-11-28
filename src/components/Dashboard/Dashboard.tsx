@@ -7,6 +7,7 @@ const Dashboard = () => {
             <h2>Dashboard</h2>
             <Link to='/cart'>View Cart</Link>
             <Link to='/orders'>Orders</Link>
+            <Link to='/wishlist'>Wish List</Link>
         </StyledDashboard>
     );
 };

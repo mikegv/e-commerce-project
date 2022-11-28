@@ -1,0 +1,20 @@
+.hero{
+    height: 500px;
+    background-color: gainsboro;
+    background-image: url('../../public/images/hero.jpg');
+    background-size: contain;
+    margin: 1rem 1rem;
+}
+
+.otherBlock{
+    margin: 3rem 0rem;
+    background-color: rgb(233, 233, 233);
+}
+.otherBlock > p{
+    margin-top: 2rem;
+}
+
+.content{
+    padding: 1rem;
+    text-align: center;
+}

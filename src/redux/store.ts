@@ -1,7 +1,7 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 import orderReducer from './orders'
 import cartReducer from './cart'
-
+import wishListReducer from './wish'
 
 
 const authInitialState = {
@@ -24,7 +24,8 @@ const authSlice = createSlice({
 const store = configureStore({reducer: {
     cart: cartReducer, 
     auth: authSlice.reducer,
-    orders: orderReducer
+    orders: orderReducer,
+    wishList: wishListReducer
 }})
 
 export type RootState = ReturnType<typeof store.getState>

@@ -2,13 +2,15 @@ import { Route, Routes, Navigate } from "react-router-dom";
 import Login from "./components/Login/Login";
 import Dashboard from "./components/Dashboard/Dashboard";
 import Layout from "./components/Layout";
-import Store from "./components/Shop";
+import Products from "./components/Products";
 import Cart from "./components/cart/Cart";
 import { useEffect, useState } from "react";
 import { authActions } from "./redux/store";
 import "./App.css";
 import { useAppDispatch, useAppSelector } from "./hooks/hooks";
 import Orders from "./components/orders/Orders";
+import Landing from "./components/Landing";
+import WishList from "./components/wishList/WishList";
 
 function App() {
   const [firstLoad, setFirstLoad] = useState(true)
@@ -28,12 +30,14 @@ function App() {
     <div className="App">
       <Routes>
         <Route element={<Layout />}>
+          <Route path="/" element={<Landing />} />
           {!loggedIn && (
             <>
-              <Route path="/" element={<Login />} />
-              <Route path="/profile" element={<Navigate to="/" />} />
-              <Route path="/cart" element={<Navigate to="/" />} />
-              <Route path="/orders" element={<Navigate to="/" />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/profile" element={<Navigate to="/login" />} />
+              <Route path="/cart" element={<Navigate to="/login" />} />
+              <Route path="/orders" element={<Navigate to="/login" />} />
+              <Route path="/wishlist" element={<Navigate to="/login" />} />
             </>
           )}
           {loggedIn && (
@@ -42,9 +46,10 @@ function App() {
               <Route path="/profile" element={<Dashboard />} />
               <Route path="/cart" element={<Cart />} />
               <Route path="/orders" element={<Orders />} />
+              <Route path="/wishlist" element={<WishList />} />
             </>
           )}
-          <Route path="/store" element={<Store />} />
+          <Route path="/store" element={<Products />} />
         </Route>
       </Routes>
     </div>
