@@ -4,6 +4,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 interface WishItem {
     id: number,
     name: string,
+    desc: string,
     price: number,
 }
 
@@ -19,13 +20,14 @@ const wishListSlice = createSlice({
     name: 'wishList',
     initialState: wishInitialState,
     reducers: {
-        addItem(state, action: PayloadAction<{id: number, name: string, price: number}>){
+        addItem(state, action: PayloadAction<{id: number, name: string, desc: string, price: number}>){
             let name = action.payload.name;
             let id = action.payload.id;
+            let desc = action.payload.desc;
             let price = action.payload.price;
             let item = state.items.find(item => item.id === id);
             if(!item){
-                state.items.push({id, name, price});
+                state.items.push({id, name, desc, price});
             }
         },
         removeItem(state, action: PayloadAction<{id: number}>){

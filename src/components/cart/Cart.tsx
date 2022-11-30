@@ -27,8 +27,8 @@ const Cart = () => {
           total = total + (item.quantity * item.price)
           return (
             <>
-              <StyledListCard>
-                <h4>{item.name}</h4>
+              <StyledListCard image={item.name}>
+                <p>{item.desc}</p>
                 <p>Individual price: ${item.price}</p>
                 <p>Quantity: {item.quantity}</p>
               </StyledListCard>

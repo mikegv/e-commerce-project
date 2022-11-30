@@ -16,8 +16,8 @@ const WishList = () => {
         cart.map((item) => {
           return (
             <>
-              <StyledListCard>
-                <h4>{item.name}</h4>
+              <StyledListCard image={item.name}>
+                <h4>{item.desc}</h4>
                 <p>Individual price: ${item.price}</p>
               </StyledListCard>
               <StyledItemButton onClick={()=>removeItem(item.id)}>Remove one</StyledItemButton>

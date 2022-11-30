@@ -15,8 +15,8 @@ const Orders = () => {
                         <p>Order #{order.id}</p>
                         <p>Total: ${order.total}</p>
                         {order.items.map(item => {
-                            return <StyledListCard>
-                                <p>{item.name}</p>
+                            return <StyledListCard image={item.name}>
+                                <p>{item.desc}</p>
                                 <p>quantity: {item.quantity}</p>
                             </StyledListCard>
                         })}

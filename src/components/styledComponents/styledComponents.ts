@@ -30,17 +30,36 @@ export const StyledDashboard = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
   padding: 1rem;
-  a {
-    margin-top: 2rem;
+  flex-grow: 1;
+ h2{
+  margin: 1rem;
+}
+ .userContent{
+  display:flex;
+  justify-content: flex-start;
+  width: 100%;
+ }
+ 
+#sidenav{
+    align-self: flex-start;
+    display: flex;
+    flex-direction: column;
+    height: 50vh;
+    min-width: 10%;
+  }
+  #sidenav a{
+    margin: 1rem;
     text-decoration: none;
     color: black;
   }
 `
 interface styledCardProps {
-  hearted?: boolean;
+  hearted?: boolean,
+  image?: string,
 }
-export const StyledCard = styled.div`
+export const StyledCard = styled.div<styledCardProps>`
   box-shadow: 4px 5px 11px rgb(200, 200, 200);
   border-radius: 5px;
   display: flex;
@@ -51,6 +70,9 @@ export const StyledCard = styled.div`
   margin: 2rem;
   width: 22vw;
   min-height: 13rem;
+  background-image: url(${props => props.image});
+  background-size: 100%;
+  background-repeat: no-repeat;
   p {
     margin-top: 0.5rem;
   }
@@ -88,4 +110,11 @@ export const StyledItemButton = styled.button`
   :active {
     background-color: darkgray;
   }
+`
+
+export const StyledFooter = styled.div`
+  position: relative;
+  bottom: 10;
+  background-color: darkgray;
+  width: 100%;
 `

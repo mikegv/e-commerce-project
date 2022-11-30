@@ -1,20 +1,42 @@
 .hero{
     height: 500px;
-    background-color: gainsboro;
     background-image: url('../../public/images/hero.jpg');
-    background-size: contain;
+    background-size: 50%;
+    background-repeat: repeat;
     margin: 1rem 1rem;
 }
 
+.description{
+    text-align: center;
+    padding: 5rem;
+}
+.description p{
+    margin: 2rem;
+    font-size: 1.5rem;
+}
 .otherBlock{
     margin: 3rem 0rem;
-    background-color: rgb(233, 233, 233);
+    padding: 5rem;
 }
-.otherBlock > p{
-    margin-top: 2rem;
+.otherBlock p{
+    text-align: center;
+    font-size: 2rem;
 }
 
-.content{
-    padding: 1rem;
-    text-align: center;
+.featuredItems{
+    display: flex;
+    justify-content: space-evenly;
+    padding: 2rem;
+}
+
+.featuredItems > div{
+    border: solid 2px rgb(160, 255, 255);
+    /* padding: 2rem; */
+    border-radius: 10px;
+    height: 20rem;
+    overflow: hidden;
+}
+
+.featuredItems div img{
+    height: 100%;
 }

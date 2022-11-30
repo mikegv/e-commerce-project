@@ -42,18 +42,16 @@ const ItemCard: React.FC<{
       }, 350);
     }
   };
-
   return (
-    <StyledCard >
-      <h4>{name}</h4>
-      <p>{desc}</p>
+    <StyledCard image={name}>
+      <h4>{desc}</h4>
       <p>${price}</p>
       <div>
         {loggedIn && (
           <>
             <span 
                 onClick={() =>
-                dispatch(wishListActions.addItem({ id, name, price }))
+                dispatch(wishListActions.addItem({ id, name, desc, price }))
               }
             >
               <FontAwesomeIcon
@@ -64,7 +62,7 @@ const ItemCard: React.FC<{
               />
             </span>
             <span
-              onClick={() => dispatch(cartActions.addItem({ id, name, price }))}
+              onClick={() => dispatch(cartActions.addItem({ id, name, desc, price }))}
             >
               <FontAwesomeIcon
                 icon={faCartShopping}
@@ -80,9 +78,9 @@ const ItemCard: React.FC<{
             <Link to="/">
               <FontAwesomeIcon icon={faHeart} className="heart" />
             </Link>
+            {/* <img src={process.env.PUBLIC_URL + '/images/products/clay pot.jpg'} /> */}
             <Link
-              to="/
-            "
+              to="/"
             >
               <FontAwesomeIcon icon={faCartShopping} className="cart" />
             </Link>

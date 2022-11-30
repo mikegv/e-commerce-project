@@ -13,24 +13,26 @@ import Landing from "./components/Landing";
 import WishList from "./components/wishList/WishList";
 
 function App() {
-  const [firstLoad, setFirstLoad] = useState(true)
+  const [firstLoad, setFirstLoad] = useState(true);
   const dispatch = useAppDispatch();
-  const loggedIn = useAppSelector(state => state.auth.loggedIn);
-  useEffect(()=>{
+  const loggedIn = useAppSelector((state) => state.auth.loggedIn);
+  useEffect(() => {
     //check for token from browser on first load of page
-    if(firstLoad){
-      let token = localStorage.getItem('token');
-      if(token){
+    if (firstLoad) {
+      let token = localStorage.getItem("token");
+      if (token) {
         dispatch(authActions.login());
         setFirstLoad(false);
       }
     }
-  },[firstLoad, dispatch])
+  }, [firstLoad, dispatch]);
   return (
     <div className="App">
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Landing />} />
+          <Route path="/store" element={<Products />} />
+
           {!loggedIn && (
             <>
               <Route path="/login" element={<Login />} />
@@ -41,15 +43,12 @@ function App() {
             </>
           )}
           {loggedIn && (
-            <>
-              <Route path="/" element={<Dashboard />} />
-              <Route path="/profile" element={<Dashboard />} />
-              <Route path="/cart" element={<Cart />} />
-              <Route path="/orders" element={<Orders />} />
-              <Route path="/wishlist" element={<WishList />} />
-            </>
+              <Route path="/profile" element={<Dashboard />}>
+                <Route path="cart" element={<Cart />} />
+                <Route path="orders" element={<Orders />} />
+                <Route path="wishlist" element={<WishList />} />
+              </Route>
           )}
-          <Route path="/store" element={<Products />} />
         </Route>
       </Routes>
     </div>
