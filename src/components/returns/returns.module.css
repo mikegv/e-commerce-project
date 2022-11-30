@@ -1,0 +1,27 @@
+.returns{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+    padding-top: 10rem;
+}
+.returns form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.returns form > *{
+    margin: 10px;
+    border-radius: 10px;
+}
+
+.returns form input{
+    font-size: 1rem;
+    padding: .5rem;
+}
+
+.returns button{
+    cursor: pointer;
+    width: 50%;
+}
