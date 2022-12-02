@@ -103,6 +103,13 @@ export const StyledListCard = styled(StyledCard)`
   margin-bottom: 0px;
 `
 
+export const StyledReceipt = styled(StyledCard)`
+  a{
+    margin: 3rem 0rem;
+    text-decoration:none;
+    }
+`
+
 export const StyledItemButton = styled.button`
   margin-top: 0.6rem;
   cursor: pointer;

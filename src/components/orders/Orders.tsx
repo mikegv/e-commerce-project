@@ -1,5 +1,6 @@
 import { useAppSelector } from "../../hooks/hooks";
-import { StyledListCard, StyledOrderPage } from "../styledComponents/styledComponents";
+import { StyledListCard, StyledOrderPage, StyledReceipt } from "../styledComponents/styledComponents";
+import { Link } from "react-router-dom";
 
 const Orders = () => {
     const prevOrders = useAppSelector(state => state.orders.orders);
@@ -11,7 +12,7 @@ const Orders = () => {
                 prevOrders.length < 1 ? 
                 <p>You have made no orders yet.</p> :
                 prevOrders.map(order => {
-                    return <StyledListCard>
+                    return <StyledReceipt key={order.id}>
                         <p>Order #{order.id}</p>
                         <p>Total: ${order.total}</p>
                         {order.items.map(item => {
@@ -20,7 +21,8 @@ const Orders = () => {
                                 <p>quantity: {item.quantity}</p>
                             </StyledListCard>
                         })}
-                    </StyledListCard>
+                        <Link to={`/returns/${order.id}`}>Make a return</Link>
+                    </StyledReceipt>
                 })
                 
             }

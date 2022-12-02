@@ -1,6 +1,6 @@
 import classes from './returns.module.css'
 
-const Returns = () => {
+const ReturnsForm:React.FC = () => {
     return (
         <div className={classes.returns}>
             <h1>Return</h1>
@@ -13,4 +13,4 @@ const Returns = () => {
     );
 };
 
-export default Returns;
+export default ReturnsForm;

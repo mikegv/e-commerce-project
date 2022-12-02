@@ -11,7 +11,8 @@ import { useAppDispatch, useAppSelector } from "./hooks/hooks";
 import Orders from "./components/orders/Orders";
 import Landing from "./components/Landing";
 import WishList from "./components/wishList/WishList";
-import Returns from "./components/returns/Returns";
+import ReturnsForm from "./components/returns/ReturnsForm";
+import Return from "./components/returns/Return";
 
 function App() {
   const [firstLoad, setFirstLoad] = useState(true);
@@ -33,7 +34,8 @@ function App() {
         <Route element={<Layout />}>
           <Route path="/" element={<Landing />} />
           <Route path="/store" element={<Products />} />
-          <Route path="/returns" element={<Returns />} />
+          <Route path="/returns" element={<ReturnsForm />} />
+          <Route path="/returns/:id" element={<Return />} />
           {!loggedIn && (
             <>
               <Route path="/login" element={<Login />} />
