@@ -65,11 +65,10 @@ export const StyledCard = styled.div<styledCardProps>`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
-  padding: 1.5rem;
+  justify-content: flex-end;
   margin: 2rem;
   width: 22vw;
-  min-height: 13rem;
+  min-height: 17rem;
   background-image: url(${props => props.image});
   background-size: 100%;
   background-repeat: no-repeat;
@@ -78,9 +77,11 @@ export const StyledCard = styled.div<styledCardProps>`
   }
   div {
     width: 100%;
+    padding: 1rem .5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: white;
   }
   span {
     cursor: pointer;

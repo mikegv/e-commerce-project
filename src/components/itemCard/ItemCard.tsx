@@ -22,7 +22,7 @@ const ItemCard: React.FC<{
   const dispatch = useDispatch();
 
   let wishList = useAppSelector((state) => state.wishList.items);
-  
+
   let ids = wishList.map((item) => item.id);
 
   const [heartClasses, setHeartClasses] = useState("heart");
@@ -42,25 +42,26 @@ const ItemCard: React.FC<{
   };
   return (
     <StyledCard image={name}>
-      <h4>{desc}</h4>
-      <p>${price}</p>
       <div>
         {loggedIn && (
           <>
-            <span 
-                onClick={() =>
+            <span
+              onClick={() =>
                 dispatch(wishListActions.addItem({ id, name, desc, price }))
               }
             >
               <FontAwesomeIcon
                 icon={faHeart}
                 className={`${heartClasses}`}
-                onClick={() => addedItem("heart")
-                }
+                onClick={() => addedItem("heart")}
               />
             </span>
+            <h4>{desc}</h4>
+            <p>${price}</p>
             <span
-              onClick={() => dispatch(cartActions.addItem({ id, name, desc, price }))}
+              onClick={() =>
+                dispatch(cartActions.addItem({ id, name, desc, price }))
+              }
             >
               <FontAwesomeIcon
                 icon={faCartShopping}
@@ -76,10 +77,9 @@ const ItemCard: React.FC<{
             <Link to="/">
               <FontAwesomeIcon icon={faHeart} className="heart" />
             </Link>
-            {/* <img src={process.env.PUBLIC_URL + '/images/products/clay pot.jpg'} /> */}
-            <Link
-              to="/"
-            >
+            <h4>{desc}</h4>
+            <p>${price}</p>
+            <Link to="/">
               <FontAwesomeIcon icon={faCartShopping} className="cart" />
             </Link>
           </>
