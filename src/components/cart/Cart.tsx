@@ -26,14 +26,16 @@ const Cart = () => {
         cart.map((item) => {
           total = total + (item.quantity * item.price)
           return (
-            <>
+            <div key={item.id} style={{textAlign: "center"}}>
               <StyledListCard image={item.name}>
+                <div>
                 <p>{item.desc}</p>
-                <p>Individual price: ${item.price}</p>
-                <p>Quantity: {item.quantity}</p>
+                <p className="price">Price: ${item.price}</p>
+                <p className="quantity">Quantity: {item.quantity}</p>
+                </div>
               </StyledListCard>
               <StyledItemButton onClick={()=>removeItem(item.id)}>Remove one</StyledItemButton>
-            </>
+            </div>
           );
         })}
         {

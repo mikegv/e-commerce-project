@@ -4,7 +4,7 @@ import { StyledDashboard } from "../styledComponents/styledComponents";
 const Dashboard = () => {
   return (
     <StyledDashboard>
-      <h2>Dashboard</h2>
+      {/* <h2>Dashboard</h2> */}
       <div className="userContent">
         <div id="sidenav">
           <Link to="cart">View Cart</Link>

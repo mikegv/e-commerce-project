@@ -102,6 +102,17 @@ export const StyledCard = styled.div<styledCardProps>`
 
 export const StyledListCard = styled(StyledCard)`
   margin-bottom: 0px;
+  min-height: 20rem;
+  div{
+    flex-direction:column;
+    padding: .5rem;
+    border-radius: 0px 0px 10px 10px;
+  }
+  
+  p{
+    text-align: center;
+  }
+  
 `
 
 export const StyledReceipt = styled(StyledCard)`
