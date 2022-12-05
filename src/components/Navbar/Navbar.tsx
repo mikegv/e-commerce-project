@@ -33,7 +33,7 @@ const Navbar = () => {
               <Link to="/profile">Your Profile</Link>
             </li>
             <li className={classes.bag}>
-              <Link to="/cart">
+              <Link to="/profile/cart">
                 <FontAwesomeIcon icon={faShoppingBag} />
               </Link>
             </li>
