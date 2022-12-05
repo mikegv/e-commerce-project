@@ -113,7 +113,10 @@ export const StyledListCard = styled(StyledCard)`
   p{
     text-align: center;
   }
-  
+  input{
+    width: 3rem;
+    text-align: center;
+  }
 `
 export const StyledReceiptCard = styled(StyledCard)`
   height: 20rem;

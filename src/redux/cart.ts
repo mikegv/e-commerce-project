@@ -33,18 +33,24 @@ const cartSlice = createSlice({
                 item!.quantity += 1;
             }
         },
-        removeItem(state, action: PayloadAction<{id: number}>){
+        changeQuantity(state, action: PayloadAction<{id: number, quantity: number}>){
             let id = action.payload.id;
             let item = state.items.find(item => item.id === id);
             if(item === null){
                 console.log('error, item not found')
                 return
             }
-            if(item!.quantity === 1){
-                state.items = state.items.filter(item => item.id !== id)//remove item from cpy array
-            }else{
-                item!.quantity -= 1;
+            item!.quantity = action.payload.quantity;
+        },
+        removeItemCompletely(state, action: PayloadAction<{id: number}>){
+            let id = action.payload.id;
+            let item = state.items.find(item => item.id === id);
+            if(item === null){
+                console.log('error, item not found')
+                return
             }
+            state.items = state.items.filter(item => item.id !== id)//remove item from cpy array
+            
         },
         clearCart(state){
             state.items = [];

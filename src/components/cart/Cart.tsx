@@ -1,3 +1,4 @@
+import { ChangeEvent } from "react";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { CartItem ,cartActions } from "../../redux/cart";
 import { orderActions } from "../../redux/orders";
@@ -9,9 +10,11 @@ const Cart = () => {
   const pageHeading = cart.length > 0 ? 'Your Cart' : 'Your Cart Is Emtpy';
   let total = 0;
   const removeItem = (id: number) => {
-    dispatch(cartActions.removeItem({id}));  
+    dispatch(cartActions.removeItemCompletely({id}));  
   }
-  
+  const changeQuantity = (id: number, e: ChangeEvent<HTMLInputElement>) => {
+    dispatch(cartActions.changeQuantity({id, quantity: +e.target.value}));
+  }
   const placeOrder = () => {
     let order: CartItem[] = [];
     cart.map(item => order.push({...item}))
@@ -31,10 +34,11 @@ const Cart = () => {
                 <div>
                 <p>{item.desc}</p>
                 <p className="price">Price: ${item.price}</p>
-                <p className="quantity">Quantity: {item.quantity}</p>
+                <label>Quantity</label>
+                <input type='number' className="quantity" value={item.quantity} min='1' max='5' onChange={(e)=>changeQuantity(item.id, e)}/>
                 </div>
               </StyledListCard>
-              <StyledItemButton onClick={()=>removeItem(item.id)}>Remove one</StyledItemButton>
+              <StyledItemButton onClick={()=>removeItem(item.id)}>Remove</StyledItemButton>
             </div>
           );
         })}
