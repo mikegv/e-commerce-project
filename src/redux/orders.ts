@@ -24,12 +24,14 @@ const orderSlice = createSlice({
         },
         returnItem(state, action: PayloadAction<{orderId: number, quantities: {id: number, quantity: number}[]}>){
             let order: Order = state.orders[0];
+            
             for(let i = 0; i < state.orders.length; i++ ){
                 if(state.orders[i].id === action.payload.orderId){
                     order = {...state.orders[i]}
                     break;
                 }
-            }            
+            }         
+
             for(let i = 0; i < order.items.length; i++){
                 action.payload.quantities.forEach(item => {
                     if(item.id === order.items[i].id){
@@ -41,6 +43,23 @@ const orderSlice = createSlice({
                     }
                 })
             }
+        },
+        updateTotal(state, action: PayloadAction<{orderId:number}>){
+            let order: Order = state.orders[0];
+            let total = 0;
+            let index = 0;
+            for(let i = 0; i < state.orders.length; i++ ){
+                if(state.orders[i].id === action.payload.orderId){
+                    order = {...state.orders[i]}
+                    index = i;
+                    break;
+                }
+            }
+            
+            for(let i = 0; i < order.items.length; i++){
+                total = total + (order.items[i].quantity * order.items[i].price);
+            }      
+            state.orders[index].total = total;
         }
     }
 })

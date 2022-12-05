@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { orderActions } from "../../redux/orders";
-import ItemCard from "../itemCard/ItemCard";
-import { StyledListCard } from "../styledComponents/styledComponents";
+import { StyledReceiptCard } from "../styledComponents/styledComponents";
 
 interface Quantity {
   id: number;
@@ -53,8 +52,9 @@ const Return: React.FC = (props) => {
 
   const returnItems = (e: React.FormEvent) => {
     e.preventDefault();
-    dispatch(orderActions.returnItem({orderId: +params.id!, quantities}))
-    console.log('component ', quantities)
+    dispatch(orderActions.returnItem({orderId: +params.id!, quantities}));
+    dispatch(orderActions.updateTotal({orderId: order[0].id}))
+    nav('/profile/orders');
   }
 
 
@@ -65,9 +65,10 @@ const Return: React.FC = (props) => {
         {items?.map((item, index) => {
           return (
             <div key={item.id} style={{textAlign:'center'}}>
-            <StyledListCard image={item.name} />
-            <label>
-              {item.desc}    
+            <StyledReceiptCard image={item.name}>
+              <div>
+              <p>{item.desc}</p>
+              <p>How many would you like to keep?</p>
               <input
                 type='number'
                 value={quantities[index].quantity}
@@ -75,7 +76,8 @@ const Return: React.FC = (props) => {
                 min='0'
                 max={items[index].quantity}
               />
-            </label>
+              </div>
+            </StyledReceiptCard>
             </div>
           );
         })}

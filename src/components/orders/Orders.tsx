@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Orders = () => {
     const prevOrders = useAppSelector(state => state.orders.orders);
-
+    
     return (
         <StyledOrderPage>
             <h2>Order History</h2>
