@@ -103,6 +103,7 @@ export const StyledCard = styled.div<styledCardProps>`
 export const StyledListCard = styled(StyledCard)`
   margin-bottom: 0px;
   min-height: 20rem;
+  
   div{
     flex-direction:column;
     padding: .5rem;
@@ -114,10 +115,28 @@ export const StyledListCard = styled(StyledCard)`
   }
   
 `
+export const StyledReceiptCard = styled(StyledCard)`
+  height: 20rem;
+  padding:0px;
+  div{
+    width:100%;
+    flex-direction:column;
+    padding: .5rem;
+    border-radius: 0px 0px 10px 10px;
+  }
+  
+  p{
+    text-align: center;
+  }
+  
+`
 
-export const StyledReceipt = styled(StyledCard)`
+export const StyledReceipt = styled.div`
+text-align: center;
+padding: 1rem;
+box-shadow: 4px 5px 11px rgb(200, 200, 200);
+margin: 4rem;
   a{
-    margin: 3rem 0rem;
     text-decoration:none;
     }
 `
