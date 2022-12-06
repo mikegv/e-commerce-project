@@ -26,7 +26,9 @@ const Navbar = () => {
         <li>
           <Link to="/store">Products</Link>
         </li>
-
+        <li>
+          <Link to="/returns">Returns</Link>
+        </li>
         {loggedIn && (
           <>
             <li>

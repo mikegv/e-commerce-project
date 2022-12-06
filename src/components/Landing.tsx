@@ -1,5 +1,5 @@
 import "./Landing.css";
-
+import { Link } from "react-router-dom";
 const Landing = () => {
   return (
     <div style={{ width: "100%" }}>
@@ -13,9 +13,9 @@ const Landing = () => {
           Featured Items!
         </p>
         <div className="featuredItems">
-          <div><img src={process.env.PUBLIC_URL + '/images/succulent.jpg'} /></div>
-          <div><img src={process.env.PUBLIC_URL + '/images/succulent.jpg'} /></div>
-          <div><img src={process.env.PUBLIC_URL + '/images/succulent.jpg'} /></div>
+          <div><Link to='/store'><img src={process.env.PUBLIC_URL + '/images/succulent.jpg'} /></Link></div>
+          <div><Link to='/store'><img src={process.env.PUBLIC_URL + '/images/succulent.jpg'} /></Link></div>
+          <div><Link to='/store'><img src={process.env.PUBLIC_URL + '/images/succulent.jpg'} /></Link></div>
         </div>
         <p>See All Products</p>
       </div>
