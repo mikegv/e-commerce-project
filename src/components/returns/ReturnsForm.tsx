@@ -12,7 +12,7 @@ const ReturnsForm:React.FC = () => {
     }
     useEffect(()=>{
         if(order > 0){
-            navigate('/returns/'+order)
+            navigate('/returns/'+ order)
         }
     },[navigate, order])
     return (
