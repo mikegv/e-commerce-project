@@ -60,7 +60,7 @@ interface styledCardProps {
   image?: string,
 }
 export const StyledCard = styled.div<styledCardProps>`
-  box-shadow: 4px 5px 11px rgb(200, 200, 200);
+  box-shadow: 4px 5px 11px rgb(240, 240, 240);
   border-radius: 5px;
   display: flex;
   flex-direction: column;
@@ -137,7 +137,7 @@ export const StyledReceiptCard = styled(StyledCard)`
 export const StyledReceipt = styled.div`
 text-align: center;
 padding: 1rem;
-box-shadow: 4px 5px 11px rgb(200, 200, 200);
+box-shadow: 4px 5px 11px rgb(240, 240, 240);
 margin: 4rem;
   a{
     text-decoration:none;
@@ -154,8 +154,20 @@ export const StyledItemButton = styled.button`
 `
 
 export const StyledFooter = styled.div`
-  position: relative;
-  bottom: 10;
-  background-color: darkgray;
+  background-color: rgb(240,240,240);
   width: 100%;
+  padding: 3rem 6rem;
+  display: flex;
+  justify-content: space-between;
+  p{
+    margin-top:2rem;
+    cursor: pointer;
+  }
+  .copyright{
+    align-self: flex-end;
+  }
+  a{
+    text-decoration: none;
+    color: black;
+  }
 `
