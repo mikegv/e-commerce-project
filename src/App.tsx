@@ -40,9 +40,9 @@ function App() {
             <>
               <Route path="/login" element={<Login />} />
               <Route path="/profile" element={<Navigate to="/login" />} />
-              <Route path="/cart" element={<Navigate to="/login" />} />
-              <Route path="/orders" element={<Navigate to="/login" />} />
-              <Route path="/wishlist" element={<Navigate to="/login" />} />
+              <Route path="/profile/cart" element={<Navigate to="/login" />} />
+              <Route path="/profile/orders" element={<Navigate to="/login" />} />
+              <Route path="/profile/wishlist" element={<Navigate to="/login" />} />
             </>
           )}
           {loggedIn && (
