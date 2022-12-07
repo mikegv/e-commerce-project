@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 
-interface WishItem {
+export interface WishItem {
     id: number,
     name: string,
     desc: string,

@@ -23,7 +23,7 @@ const ItemCard: React.FC<{
 
   let wishList = useAppSelector((state) => state.wishList.items);
 
-  let ids = wishList.map((item) => item.id);
+  // let ids = wishList.map((item) => item.id);
 
   const [heartClasses, setHeartClasses] = useState("heart");
   const [cartClasses, setCartClasses] = useState("cart");

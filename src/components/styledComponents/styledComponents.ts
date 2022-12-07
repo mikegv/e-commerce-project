@@ -21,11 +21,20 @@ export const StyledCartPage = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
+
+  .wishListHeader{
+    display:flex;
+    align-items: center;
+  }
+  .headerHeart{
+    color:red;
+    height: 20%;
+  }
 `
 export const StyledOrderPage = styled(StyledCartPage)``
 
 export const StyledDashboard = styled.div`
-  height: 100%;
+  min-height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -48,6 +57,7 @@ export const StyledDashboard = styled.div`
     flex-direction: column;
     height: 50vh;
     min-width: 10%;
+    padding-top: 10rem;
   }
   #sidenav a{
     margin: 1rem;
@@ -116,6 +126,10 @@ export const StyledListCard = styled(StyledCard)`
   input{
     width: 3rem;
     text-align: center;
+  }
+  .icons{
+    display: flex;
+    flex-direction: row;
   }
 `
 export const StyledReceiptCard = styled(StyledCard)`
