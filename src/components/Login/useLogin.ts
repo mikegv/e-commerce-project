@@ -5,9 +5,6 @@ import { authActions } from "../../redux/store";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-//mong username: admin
-// mongo pw: ni17SBgsChvQX8T8
-
 
 
 const useLogin = () => {
