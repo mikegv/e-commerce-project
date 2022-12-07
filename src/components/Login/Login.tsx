@@ -6,8 +6,10 @@ const Login = () => {
 
   let {
     email,
+    reemail,
     password,
     emailChangeHandler,
+    reemailChangeHandler,
     passwordChangeHandler,
     error,
     submitHandler,
@@ -40,6 +42,16 @@ const Login = () => {
             onChange={(e) => emailChangeHandler(e)}
           />
         </label>
+        {!login &&
+        <label>
+          <span>Re-Enter Email:</span>
+          <input
+            type="text"
+            value={reemail}
+            onChange={(e) => reemailChangeHandler(e)}
+          />
+        </label>
+        }
         <label>
           <span>Password:</span>
           <input
