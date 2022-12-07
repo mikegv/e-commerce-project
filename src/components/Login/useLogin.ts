@@ -36,7 +36,7 @@ const useLogin = () => {
   function submitHandler(e: FormEvent, login: boolean) {
     e.preventDefault();
     let url: string;
-    if(!login && email !== reemail){
+    if(!login && email !== reemail){ //check re-entered email if registering only not on regular login
       setError('Email doesnt match')
       return
     }
