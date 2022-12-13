@@ -39,29 +39,33 @@ const useLogin = () => {
     }
     if (login) {
       //sign in with existing account endpoint
-      url =
-        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=";
+      url = 'http://localhost:3000/auth/login'
+      // url ='https://ulayuk23e4.execute-api.us-west-1.amazonaws.com/dev/auth/login'
+        // "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=";
     } else {
       //register new account endpoint
-      url = "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=";
+      url = 'http://localhost:3000/auth/register'
+      // url = 'https://ulayuk23e4.execute-api.us-west-1.amazonaws.com/dev/auth/register'
+      // url = "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=";
     }
     axios
-      .post(`${url}${process.env.REACT_APP_API_KEY}`, {
-        email,
+      .post(`${url}`, {
+        userName: email,
         password,
-        returnSecureToken: true,
+        // returnSecureToken: true,
       })
       .then((res) => {
-        localStorage.setItem('token', res.data.idToken);
+        localStorage.setItem('token', res.data.token);
         dispatch(authActions.login());
         setEmail('')
         setPassword('')
         navigate('/profile');
       })
       .catch(err => {
-        setError(err.response.data.error.message)
-        setEmail('')
-        setPassword('')
+        setError(err.response.data.error.message);
+        setEmail('');
+        setReemail('');
+        setPassword('');
       }
       );
   }
