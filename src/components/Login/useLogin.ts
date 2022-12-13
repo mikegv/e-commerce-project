@@ -39,13 +39,13 @@ const useLogin = () => {
     }
     if (login) {
       //sign in with existing account endpoint
-      url = 'http://localhost:3000/auth/login'
-      // url ='https://ulayuk23e4.execute-api.us-west-1.amazonaws.com/dev/auth/login'
+      // url = 'http://localhost:3000/auth/login'
+      url ='https://ulayuk23e4.execute-api.us-west-1.amazonaws.com/dev/auth/login'
         // "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=";
     } else {
       //register new account endpoint
-      url = 'http://localhost:3000/auth/register'
-      // url = 'https://ulayuk23e4.execute-api.us-west-1.amazonaws.com/dev/auth/register'
+      // url = 'http://localhost:3000/auth/register'
+      url = 'https://ulayuk23e4.execute-api.us-west-1.amazonaws.com/dev/auth/register'
       // url = "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=";
     }
     axios
