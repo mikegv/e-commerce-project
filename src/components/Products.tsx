@@ -26,7 +26,7 @@ const Products: React.FC = () => {
   return (
     <StyledShopLayout>
       {results.map((item) => (
-        <ItemCard key={item.id} product={item}></ItemCard>
+        <ItemCard key={item.itemId} product={item}></ItemCard>
       ))}
       <div className="pages">
         <span style={{ cursor: "pointer" }} onClick={() => paginate("prev")}>

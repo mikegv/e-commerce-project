@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 
 export interface WishItem {
-    id: number,
+    itemId: number,
     name: string,
     desc: string,
     price: number,
@@ -20,24 +20,24 @@ const wishListSlice = createSlice({
     name: 'wishList',
     initialState: wishInitialState,
     reducers: {
-        addItem(state, action: PayloadAction<{id: number, name: string, desc: string, price: number}>){
+        addItem(state, action: PayloadAction<{itemId: number, name: string, desc: string, price: number}>){
             let name = action.payload.name;
-            let id = action.payload.id;
+            let itemId = action.payload.itemId;
             let desc = action.payload.desc;
             let price = action.payload.price;
-            let item = state.items.find(item => item.id === id);
+            let item = state.items.find(item => item.itemId === itemId);
             if(!item){
-                state.items.push({id, name, desc, price});
+                state.items.push({itemId, name, desc, price});
             }
         },
-        removeItem(state, action: PayloadAction<{id: number}>){
-            let id = action.payload.id;
-            let item = state.items.find(item => item.id === id);
+        removeItem(state, action: PayloadAction<{itemId: number}>){
+            let itemId = action.payload.itemId;
+            let item = state.items.find(item => item.itemId === itemId);
             if(item === null){
                 console.log('error, item not found')
                 return
             }
-            state.items = state.items.filter(item => item.id !== id)//remove item from cpy array
+            state.items = state.items.filter(item => item.itemId !== itemId)//remove item from cpy array
         },
         // clearCart(state){
         //     state.items = [];

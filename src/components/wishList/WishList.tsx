@@ -16,14 +16,14 @@ const WishList = () => {
   const [heartClasses, setHeartClasses] = useState("heart");
   const cart = useAppSelector((state) => state.wishList.items);
   const dispatch = useAppDispatch();
-  const removeItem = (id: number) => {
-    dispatch(wishListActions.removeItem({ id }));
+  const removeItem = (itemId: number) => {
+    dispatch(wishListActions.removeItem({ itemId }));
   };
 
   const cartClickHandler = (item: WishItem) => {
     dispatch(
       cartActions.addItem({
-        id: item.id,
+        itemId: item.itemId,
         name: item.name,
         desc: item.desc,
         price: item.price,
@@ -33,7 +33,7 @@ const WishList = () => {
   const heartClickHandler = (item: WishItem) => {
     dispatch(
       wishListActions.removeItem({
-        id: item.id
+        itemId: item.itemId
       })
     );
   };

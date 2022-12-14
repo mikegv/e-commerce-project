@@ -9,11 +9,11 @@ const Cart = () => {
   const dispatch = useAppDispatch();
   const pageHeading = cart.length > 0 ? 'Your Cart' : 'Your Cart Is Emtpy';
   let total = 0;
-  const removeItem = (id: number) => {
-    dispatch(cartActions.removeItemCompletely({id}));  
+  const removeItem = (itemId: number) => {
+    dispatch(cartActions.removeItemCompletely({itemId}));  
   }
-  const changeQuantity = (id: number, e: ChangeEvent<HTMLInputElement>) => {
-    dispatch(cartActions.changeQuantity({id, quantity: +e.target.value}));
+  const changeQuantity = (itemId: number, e: ChangeEvent<HTMLInputElement>) => {
+    dispatch(cartActions.changeQuantity({itemId, quantity: +e.target.value}));
   }
   const placeOrder = () => {
     let order: CartItem[] = [];
@@ -29,16 +29,16 @@ const Cart = () => {
         cart.map((item) => {
           total = total + (item.quantity * item.price)
           return (
-            <div key={item.id} style={{textAlign: "center"}}>
+            <div key={item.itemId} style={{textAlign: "center"}}>
               <StyledListCard image={item.name}>
                 <div>
                 <p>{item.desc}</p>
                 <p className="price">Price: ${item.price}</p>
                 <label>Quantity</label>
-                <input type='number' className="quantity" value={item.quantity} min='1' max='5' onChange={(e)=>changeQuantity(item.id, e)}/>
+                <input type='number' className="quantity" value={item.quantity} min='1' max='5' onChange={(e)=>changeQuantity(item.itemId, e)}/>
                 </div>
               </StyledListCard>
-              <StyledItemButton onClick={()=>removeItem(item.id)}>Remove</StyledItemButton>
+              <StyledItemButton onClick={()=>removeItem(item.itemId)}>Remove</StyledItemButton>
             </div>
           );
         })}

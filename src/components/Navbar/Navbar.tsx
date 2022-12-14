@@ -5,12 +5,14 @@ import { RootState } from "../../redux/store";
 import classes from "./navbar.module.css";
 import { faShoppingBag } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { cartActions } from "../../redux/cart";
 
 const Navbar = () => {
   const dispatch = useDispatch();
   const loggedIn = useSelector((state: RootState) => state.auth.loggedIn);
   function logout() {
     dispatch(authActions.logout());
+    dispatch(cartActions.resetCart());
     localStorage.removeItem("token");
   }
   return (

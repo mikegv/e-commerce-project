@@ -4,6 +4,7 @@ import axios from "axios";
 import { authActions } from "../../redux/store";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { cartActions } from "../../redux/cart";
 
 
 
@@ -56,10 +57,25 @@ const useLogin = () => {
       })
       .then((res) => {
         localStorage.setItem('token', res.data.token);
-        dispatch(authActions.login());
         setEmail('')
         setPassword('')
-        navigate('/profile');
+      
+        let token = localStorage.getItem("token");
+        if(token){
+          axios.get('https://ulayuk23e4.execute-api.us-west-1.amazonaws.com/dev/auth/cart',
+           {
+            headers: {
+              'Authorization': `Bearer ${token}` 
+            }})
+          .then(res => {
+            // console.log('axios cart GET response', res)
+            dispatch(cartActions.replaceCart(res.data.cart));
+            dispatch(authActions.login());
+            navigate('/profile');
+          })
+          .catch(err => console.log('axios cart POST err ', err))
+          }
+        
       })
       .catch(err => {
         setError(err.response.data.error.message);

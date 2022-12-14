@@ -5,7 +5,7 @@ import { orderActions } from "../../redux/orders";
 import { StyledReceiptCard } from "../styledComponents/styledComponents";
 
 interface Quantity {
-  id: number;
+  itemId: number;
   quantity: number;
 }
 
@@ -28,7 +28,7 @@ const Return: React.FC = (props) => {
     let temp: Quantity[] = [];
 
     items?.forEach((item) =>
-      temp.push({ id: item.id, quantity: item.quantity })
+      temp.push({ itemId: item.itemId, quantity: item.quantity })
     );
 
     setQuantities(temp);
@@ -64,7 +64,7 @@ const Return: React.FC = (props) => {
       <form onSubmit={returnItems} style={{textAlign:'center'}}>
         {items?.map((item, index) => {
           return (
-            <div key={item.id} style={{textAlign:'center'}}>
+            <div key={item.itemId} style={{textAlign:'center'}}>
             <StyledReceiptCard image={item.name}>
               <div>
               <p>{item.desc}</p>

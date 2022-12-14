@@ -10,14 +10,14 @@ import { useState } from "react";
 import { wishListActions } from "../../redux/wish";
 
 interface Product {
-  id: number;
+  itemId: number;
   name: string;
   desc: string;
   price: number;
 }
 const ItemCard: React.FC<{
   product: Product;
-}> = ({ product: { id, name, desc, price } }) => {
+}> = ({ product: { itemId, name, desc, price } }) => {
   const loggedIn = useAppSelector((state) => state.auth.loggedIn);
   const dispatch = useDispatch();
 
@@ -47,7 +47,7 @@ const ItemCard: React.FC<{
           <>
             <span
               onClick={() =>
-                dispatch(wishListActions.addItem({ id, name, desc, price }))
+                dispatch(wishListActions.addItem({ itemId, name, desc, price }))
               }
             >
               <FontAwesomeIcon
@@ -60,7 +60,7 @@ const ItemCard: React.FC<{
             <p>${price}</p>
             <span
               onClick={() =>
-                dispatch(cartActions.addItem({ id, name, desc, price }))
+                dispatch(cartActions.addItem({ itemId, name, desc, price }))
               }
             >
               <FontAwesomeIcon
