@@ -9,6 +9,7 @@ import { cartActions } from "../../redux/cart";
 
 
 const useLogin = () => {
+  const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [reemail, setReemail] = useState("");
   const [password, setPassword] = useState("");
@@ -16,6 +17,9 @@ const useLogin = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  function setLoadingState(){
+    setLoading(prev => !prev);
+  }
   function emailChangeHandler(e: React.ChangeEvent<HTMLInputElement>) {
     if(error !== ""){
       setError("")
@@ -38,6 +42,8 @@ const useLogin = () => {
       setError('Email doesnt match')
       return
     }
+    
+
     if (login) {
       //sign in with existing account endpoint
       // url = 'http://localhost:3000/auth/login'
@@ -49,6 +55,7 @@ const useLogin = () => {
       url = 'https://ulayuk23e4.execute-api.us-west-1.amazonaws.com/dev/auth/register'
       // url = "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=";
     }
+    setLoadingState();
     axios
       .post(`${url}`, {
         userName: email,
@@ -73,7 +80,7 @@ const useLogin = () => {
             dispatch(authActions.login());
             navigate('/profile');
           })
-          .catch(err => console.log('axios cart POST err ', err))
+          .catch(err => console.log(err))
           }
         
       })
@@ -82,6 +89,7 @@ const useLogin = () => {
         setEmail('');
         setReemail('');
         setPassword('');
+        setLoadingState();
       }
       );
   }
@@ -94,6 +102,8 @@ const useLogin = () => {
     reemailChangeHandler,
     passwordChangeHandler,
     error,
+    loading,
+    setLoadingState,
     submitHandler
   };
 };

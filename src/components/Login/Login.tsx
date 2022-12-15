@@ -1,7 +1,7 @@
 import { useState } from "react";
 import classes from "./login.module.css";
 import useLogin from "./useLogin";
-
+import { ScaleLoader } from 'react-spinners'
 const Login = () => {
 
   let {
@@ -12,6 +12,8 @@ const Login = () => {
     reemailChangeHandler,
     passwordChangeHandler,
     error,
+    loading,
+    setLoadingState,
     submitHandler,
   } = useLogin();
 
@@ -63,7 +65,17 @@ const Login = () => {
         <span className={classes.error}>
           {error}
         </span>
-        <button type="submit">{login ? "Login" : "Register"}</button>
+
+      {loading && 
+      <ScaleLoader 
+        color={'black'}
+        loading={loading}
+        />
+      }
+
+        {!loading &&
+          <button type="submit">{login ? "Login" : "Register"}</button>
+        }
       </form>
     </div>
   );
